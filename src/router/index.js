@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import store from "@/store";
 import HomeView from "@/views/HomeView";
 import Login from '../components/Login.vue';
+import SignUp from "@/components/SignUp";
 
 const ifNotAuthenticated = (to, from, next) => {
   if (!store.getters.isAuthenticated) {
@@ -24,13 +25,18 @@ const routes = [
     path: '/',
     name: 'home',
     component: HomeView,
-    beforeEnter: ifAuthenticated,
+    // beforeEnter: ifAuthenticated,
   },
   {
     path: '/login',
     name: 'login',
     component: Login,
-    beforeEnter: ifNotAuthenticated,
+    // beforeEnter: ifNotAuthenticated,
+  },
+  {
+    path: '/signup',
+    name: 'signup',
+    component: SignUp,
   },
 ]
 
