@@ -7,7 +7,6 @@
     <input type="email" required v-model="email">
     <label>Password</label>
     <input type="password" required v-model="password">
-    <hr>
     <button type="submit">Login</button>
   </form>
 </template>
@@ -20,9 +19,10 @@
   padding: 10px;
   margin: 0 auto;
 }
-.login input, button {
-  border: 1px solid black;
+.sign-up input, button {
   padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid black;
 }
 hr {
   margin: 10px 0;

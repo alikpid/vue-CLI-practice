@@ -1,14 +1,13 @@
 const API = process.env.VUE_APP_API;
 
-export const loginRequest = (user) => {
+export const loginRequest = (userData) => {
     return new Promise((resolve, reject) => {
         fetch(`${API}/login`, {
             method: 'POST',
-            mode: 'no-cors',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(user),
+            body: JSON.stringify(userData),
         })
             .then((response) => response.json())
             .then((result) => resolve(result.data.user_token))
@@ -28,15 +27,21 @@ export const registrationRequest = (userData) => {
             body: JSON.stringify(userData),
         })
             .then((response) => response.json())
-            .then((result) => {
-                if (result.error) {
-                    reject(result);
-                } else {
-                    resolve(result.data.user_token);
-                }
-            })
+            .then((result) => resolve(result.data.user_token))
             .catch((error) => {
                 reject(error);
             });
+    });
+};
+
+export const logoutRequest = (token) => {
+    return new Promise((resolve) => {
+        fetch(`${API}/logout`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+            },
+        }).then((response) => resolve(response));
     });
 };

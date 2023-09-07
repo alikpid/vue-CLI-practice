@@ -25,13 +25,13 @@ const routes = [
     path: '/',
     name: 'home',
     component: HomeView,
-    // beforeEnter: ifAuthenticated,
+    beforeEnter: ifAuthenticated,
   },
   {
     path: '/login',
     name: 'login',
     component: Login,
-    // beforeEnter: ifNotAuthenticated,
+    beforeEnter: ifNotAuthenticated,
   },
   {
     path: '/signup',

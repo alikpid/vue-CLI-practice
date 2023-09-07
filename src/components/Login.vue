@@ -1,11 +1,10 @@
 <template>
-  <form class="login" @submit.prevent="auth">
+  <form class="login" @submit.prevent="login">
     <h1>Sign in</h1>
-    <label>User name</label>
-    <input type="text" required v-model="login">
+    <label>Email</label>
+    <input type="text" required v-model="email">
     <label>Password</label>
     <input type="password" required v-model="password">
-    <hr>
     <button type="submit">Login</button>
   </form>
 </template>
@@ -14,13 +13,15 @@
 .login {
   display: flex;
   flex-direction: column;
+  /*text-align: center;*/
   width: 300px;
   padding: 10px;
   margin: 0 auto;
 }
 .login input, button {
+  padding: 10px;
+  margin-bottom: 20px;
   border: 1px solid black;
-  border-radius: 5px;
 }
 hr {
   margin: 10px 0;
@@ -31,14 +32,14 @@ hr {
 export default {
   data() {
     return {
-      login: "",
+      email: "",
       password: "",
     };
   },
   methods: {
-    auth () {
+    login () {
       const userData = {
-        login: this.login,
+        email: this.email,
         password: this.password,
       };
 
